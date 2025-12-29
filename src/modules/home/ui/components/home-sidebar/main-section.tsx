@@ -1,8 +1,9 @@
 'use client';
 
+import { useAuth, useClerk } from '@clerk/nextjs';
 import { FlameIcon, HomeIcon, PlaySquareIcon } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // import { useAuth, useClerk } from "@clerk/nextjs";
+import { usePathname } from 'next/navigation';
 
 import {
   SidebarGroup,
@@ -32,8 +33,8 @@ const items = [
 ];
 
 export const MainSection = () => {
-  // const clerk = useClerk();
-  // const { isSignedIn } = useAuth();
+  const clerk = useClerk();
+  const { isSignedIn } = useAuth();
   const pathname = usePathname();
 
   return (
@@ -46,12 +47,12 @@ export const MainSection = () => {
                 tooltip={item.title}
                 asChild
                 isActive={pathname === item.url}
-                // onClick={(e) => {
-                //   if (!isSignedIn && item.auth) {
-                //     e.preventDefault();
-                //     return clerk.openSignIn();
-                //   }
-                // }}
+                onClick={(e) => {
+                  if (!isSignedIn && item.auth) {
+                    e.preventDefault();
+                    return clerk.openSignIn();
+                  }
+                }}
               >
                 <Link
                   prefetch
