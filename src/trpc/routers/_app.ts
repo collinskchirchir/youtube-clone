@@ -1,17 +1,18 @@
+import { auth } from '@clerk/nextjs/server';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
-import { baseProcedure, createTRPCRouter } from '../init';
+import { baseProcedure, createTRPCRouter, protectedProcedure } from '../init';
 
 export const appRouter = createTRPCRouter({
-  hello: baseProcedure
+  hello: protectedProcedure
     .input(
       z.object({
         text: z.string(),
       })
     )
     .query((opts) => {
-      throw new TRPCError({ code: 'BAD_REQUEST' });
+      console.log({ dbUser: opts.ctx.user });
       return {
         greeting: `hello ${opts.input.text}`,
       };
