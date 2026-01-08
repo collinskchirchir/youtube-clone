@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google';
 
 import './globals.css';
 
+import { TRPCProvider } from '@/trpc/client';
+
 const inter = Inter({ subsets: ['latin'] });
 
 // const geistSans = Geist({
@@ -34,7 +36,7 @@ export default function RootLayout({
           // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           className={inter.className}
         >
-          {children}
+          <TRPCProvider>{children}</TRPCProvider>
         </body>
       </html>
     </ClerkProvider>
