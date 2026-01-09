@@ -24,6 +24,7 @@ const eslintConfig = [
       'tailwindcss/classnames-order': 'warn',
       'tailwindcss/no-custom-classname': 'off', // Disabled for shadcn/ui custom classes
       'tailwindcss/no-contradicting-classname': 'error',
+      'no-void': 'off', // Allow void for tRPC procedures
     },
   }),
 ];
