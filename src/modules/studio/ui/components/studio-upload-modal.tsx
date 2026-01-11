@@ -30,6 +30,8 @@ export const StudioUploadModal = () => {
   //   router.push(`/studio/videos/${create.data.video.id}`);
   // };
 
+  const create = trpc.video.create.useMutation();
+
   return (
     <>
       <ResponsiveModal
@@ -47,7 +49,7 @@ export const StudioUploadModal = () => {
       </ResponsiveModal>
       <Button
         variant='secondary'
-        // onClick={() => create.mutate()}
+        onClick={() => create.mutate()}
         // disabled={create.isPending}
       >
         {/*{create.isPending ? (*/}
