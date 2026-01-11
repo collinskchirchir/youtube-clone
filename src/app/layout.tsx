@@ -7,6 +7,8 @@ import './globals.css';
 
 import { TRPCProvider } from '@/trpc/client';
 
+import { Toaster } from '@/components/ui/sonner';
+
 const inter = Inter({ subsets: ['latin'] });
 
 // const geistSans = Geist({
@@ -36,6 +38,7 @@ export default function RootLayout({
           // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           className={inter.className}
         >
+          <Toaster />
           <TRPCProvider>{children}</TRPCProvider>
         </body>
       </html>
